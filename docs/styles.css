@@ -51,8 +51,8 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
 }
 
 .libro:last-child {
@@ -91,6 +91,11 @@ button:hover {
 .libro div {
   display: flex;
   gap: 5px;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
 }
 
 .message {
