@@ -21,8 +21,11 @@ function renderLibros(libros) {
     div.className = 'libro';
     div.innerHTML = `
       <span><strong>${libro.titulo}</strong> de ${libro.autor}</span>
+      <div class="button-group">
       <button class="update-btn" onclick="updateLibro(${libro.id_libro})">Modificar</button>;
-      <button class="delete-btn" onclick="deleteLibro(${libro.id_libro})">Eliminar</button>`;
+      <button class="delete-btn" onclick="deleteLibro(${libro.id_libro})">Eliminar</button>
+      </div>
+      `;
     librosContainer.appendChild(div);
   });
 }
