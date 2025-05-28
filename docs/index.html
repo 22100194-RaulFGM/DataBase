@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>📚 Mi Biblioteca</h1>
+  <div class="container">
+    <form id="libroForm">
+      <input type="text" id="titulo" placeholder="Título" required>
+      <input type="text" id="autor" placeholder="Autor" required>
+      <input type="text" id="editorial" placeholder="Editorial" required>
+      <label for="fecha_publicacion">Fecha de publicación</label>
+      <input type="date" id="fecha_publicacion" required placeholder="Fecha de publicación" title="Ingrese la fecha de publicación">
+      <input type="text" id="genero" placeholder="Género" required>
+      <button type="submit">Agregar Libro</button>
+    </form>
+
+    <div class="message" id="message"></div>
+
+    <div id="librosContainer"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
