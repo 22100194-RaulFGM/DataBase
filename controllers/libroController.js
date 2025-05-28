@@ -31,9 +31,42 @@ exports.createLibro = (req, res) => {
 // Actualizar un libro
 exports.updateLibro = (req, res) => {
   const { id } = req.params;
-  const { titulo, autor, editorial, fecha_publicacion } = req.body;
-  const query = 'UPDATE libro SET titulo = ?, autor = ?, editorial = ?, fecha_publicacion = ?WHERE id_libro = ?';
-  db.query(query, [titulo, autor, editorial, fecha_publicacion, id], (err, result) => {
+  const { titulo, autor, editorial, fecha_publicacion, genero } = req.body;
+
+  // Construir partes dinámicas solo con campos enviados
+  const updates = [];
+  const values = [];
+
+  if (titulo) {
+    updates.push('titulo = ?');
+    values.push(titulo);
+  }
+  if (autor) {
+    updates.push('autor = ?');
+    values.push(autor);
+  }
+  if (editorial) {
+    updates.push('editorial = ?');
+    values.push(editorial);
+  }
+  if (fecha_publicacion) {
+    const año = fecha_publicacion.toString().slice(0, 4); // extraer solo año
+    updates.push('fecha_publicacion = ?');
+    values.push(año);
+  }
+  if (genero) {
+    updates.push('genero = ?');
+    values.push(genero);
+  }
+
+  if (updates.length === 0) {
+    return res.status(400).json({ error: 'No hay campos para actualizar' });
+  }
+
+  const query = `UPDATE libro SET ${updates.join(', ')} WHERE id_libro = ?`;
+  values.push(id);
+
+  db.query(query, values, (err, result) => {
     if (err) return res.status(500).json({ error: err.message });
     if (result.affectedRows === 0) return res.status(404).json({ message: 'Libro no encontrado' });
     res.json({ message: 'Libro actualizado' });
