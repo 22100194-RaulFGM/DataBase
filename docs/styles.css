@@ -73,6 +73,26 @@ button:hover {
   background: #d32f2f;
 }
 
+.update-btn {
+  background: #2196F3;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background 0.3s;
+}
+
+.update-btn:hover {
+  background: #1976D2;
+}
+
+.libro div {
+  display: flex;
+  gap: 5px;
+}
+
 .message {
   margin-bottom: 10px;
   color: green;
